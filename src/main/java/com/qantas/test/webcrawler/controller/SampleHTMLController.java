@@ -45,7 +45,7 @@ public class SampleHTMLController {
         testHTML.append("<body>");
 
         testHTML.append("<a href=\"http://localhost:8080/testhtml/2\"></a>");
-        testHTML.append("<a href=\"http://localhost:8080/testhtml/1\"></a>");
+        testHTML.append("<a href=\"http://localhost:8080/testhtml\"></a>");
         testHTML.append("<a href=\"http://localhost:8080/testhtml/4\"></a>");
 
         testHTML.append("</body>");

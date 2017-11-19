@@ -45,28 +45,25 @@ public class WebCrawler {
     }
 
     public void getPageLinks(String url, Links parentLinks) {
-
-        if (!linksVisited.contains(getBaseUrl(url)) && currentPageCount <= MAX_PAGES_TO_SEARCH) {
             try {
-                currentPageCount++;
-                linksVisited.add(getBaseUrl(url));
                 LOGGER.info("Crawling URL={}", url);
                 Document document = Jsoup.connect(url).get();
-
                 Links links = new Links();
                 links.setUrl(url);
                 links.setTitle(document.title());
                 parentLinks.getNodes().add(links);
                 parentLinks = links;
-
-                Elements linksOnPage = document.select("a[href]");
-                for (Element page : linksOnPage) {
-                    getPageLinks(page.attr("abs:href"), parentLinks);
+                if (!linksVisited.contains(getBaseUrl(url)) && currentPageCount <= MAX_PAGES_TO_SEARCH) {
+                    linksVisited.add(getBaseUrl(url));
+                    currentPageCount++;
+                    Elements linksOnPage = document.select("a[href]");
+                    for (Element page : linksOnPage) {
+                        getPageLinks(page.attr("abs:href"), parentLinks);
+                    }
                 }
             } catch (Exception e) {
                 LOGGER.error("Failed to process link {} : {}", url, e.getMessage());
             }
-        }
     }
 
     private String getBaseUrl(String url) {
