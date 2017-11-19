@@ -1,4 +1,4 @@
-# Technical Assignment for Qantas
+# Simple Web Crawler
 
 Simple Web Crawler
 
