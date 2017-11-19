@@ -1,4 +1,4 @@
-# Technical Assignment for Qantas
+# Simple Web Crawler
 
 Simple Web Crawler
 
@@ -13,9 +13,10 @@ java -jar target\test-webcrawler.war
 ```
 
 # API Docs
-### GET http://localhost:8080/webcrawler/links/{url}
+### GET http://localhost:8080/webcrawler?url={url}
 This REST API will return a tree of child pages linked to the URL
 # Testing
 ```
 mvn test
+http://localhost:8080/webcrawler?url=http://localhost:8080/testhtml
 ```
